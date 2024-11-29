@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace TCP_ChatApp.Forms
 {
-    public partial class FormMain : Form
+    public partial class SignUp : Form
     {
-        public FormMain()
+        public SignUp()
         {
             InitializeComponent();
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-            SignUp signUp = new SignUp();
-            signUp.Show();
         }
     }
 }
