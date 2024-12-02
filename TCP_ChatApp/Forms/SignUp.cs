@@ -45,10 +45,19 @@ namespace TCP_ChatApp.Forms
         private string RegisterUser(string id, string name, string password, string phoneNumber)
         {
             // 1. 입력값 유효성 검사
-            if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(phoneNumber))
-            {
-                return "ERROR|All fields are required";
-            }
+            //if (string.IsNullOrEmpty(id) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(phoneNumber))
+            //{
+            //    return "ERROR|All fields are required";
+            //}
+
+            // 빈 항목이 있을 경우 입력 요구
+            foreach(TextBox tbx in new TextBox[] {txt_id,txt_name,txt_pw,txt_rePw,txt_phoneNumber})
+                if (string.IsNullOrWhiteSpace(tbx.Text))
+                {
+                    tbx.Focus();
+                    MessageBox.Show($"{tbx.Text}를 입력해주세요");
+                    return "ERROR|All fields are required";
+                }
 
             // 2. 중복 ID 체크
             if (!checked_id)

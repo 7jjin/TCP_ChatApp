@@ -107,7 +107,7 @@
             this.txt_phoneNumber.Location = new System.Drawing.Point(111, 358);
             this.txt_phoneNumber.Name = "txt_phoneNumber";
             this.txt_phoneNumber.Size = new System.Drawing.Size(345, 30);
-            this.txt_phoneNumber.TabIndex = 5;
+            this.txt_phoneNumber.TabIndex = 6;
             // 
             // lbl_phoneNumber
             // 
@@ -130,7 +130,7 @@
             this.txt_name.Location = new System.Drawing.Point(111, 284);
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(345, 30);
-            this.txt_name.TabIndex = 1;
+            this.txt_name.TabIndex = 5;
             // 
             // lbl_name
             // 
@@ -149,7 +149,7 @@
             this.btn_idCheck.Location = new System.Drawing.Point(359, 53);
             this.btn_idCheck.Name = "btn_idCheck";
             this.btn_idCheck.Size = new System.Drawing.Size(97, 30);
-            this.btn_idCheck.TabIndex = 8;
+            this.btn_idCheck.TabIndex = 2;
             this.btn_idCheck.Text = "중복 체크";
             this.btn_idCheck.UseVisualStyleBackColor = true;
             this.btn_idCheck.Click += new System.EventHandler(this.btn_idCheck_Click);
@@ -209,7 +209,7 @@
             this.txt_id.Location = new System.Drawing.Point(111, 53);
             this.txt_id.Name = "txt_id";
             this.txt_id.Size = new System.Drawing.Size(242, 30);
-            this.txt_id.TabIndex = 2;
+            this.txt_id.TabIndex = 1;
             // 
             // lbl_id
             // 
@@ -238,7 +238,7 @@
             this.btn_register.Location = new System.Drawing.Point(145, 26);
             this.btn_register.Name = "btn_register";
             this.btn_register.Size = new System.Drawing.Size(134, 40);
-            this.btn_register.TabIndex = 1;
+            this.btn_register.TabIndex = 7;
             this.btn_register.Text = "가입완료";
             this.btn_register.UseVisualStyleBackColor = true;
             this.btn_register.Click += new System.EventHandler(this.btn_register_Click);
@@ -248,7 +248,7 @@
             this.btn_cancel.Location = new System.Drawing.Point(294, 26);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(134, 40);
-            this.btn_cancel.TabIndex = 0;
+            this.btn_cancel.TabIndex = 8;
             this.btn_cancel.Text = "가입취소";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
