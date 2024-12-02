@@ -33,13 +33,13 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_loginTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbl_id = new System.Windows.Forms.Label();
-            this.txt_id = new System.Windows.Forms.TextBox();
             this.txt_pw = new System.Windows.Forms.TextBox();
+            this.lbl_resetPw = new System.Windows.Forms.Label();
             this.lbl_pw = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.txt_id = new System.Windows.Forms.TextBox();
+            this.lbl_id = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lbl_resetPw = new System.Windows.Forms.Label();
             this.lbl_signUp = new System.Windows.Forms.Label();
             this.loginTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_loginMain)).BeginInit();
@@ -119,29 +119,6 @@
             this.panel1.Size = new System.Drawing.Size(716, 328);
             this.panel1.TabIndex = 1;
             // 
-            // lbl_id
-            // 
-            this.lbl_id.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_id.AutoSize = true;
-            this.lbl_id.Location = new System.Drawing.Point(153, 54);
-            this.lbl_id.Name = "lbl_id";
-            this.lbl_id.Size = new System.Drawing.Size(52, 15);
-            this.lbl_id.TabIndex = 0;
-            this.lbl_id.Text = "아이디";
-            // 
-            // txt_id
-            // 
-            this.txt_id.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_id.Font = new System.Drawing.Font("돋움", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txt_id.Location = new System.Drawing.Point(156, 82);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.Size = new System.Drawing.Size(383, 39);
-            this.txt_id.TabIndex = 1;
-            // 
             // txt_pw
             // 
             this.txt_pw.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -152,6 +129,20 @@
             this.txt_pw.Name = "txt_pw";
             this.txt_pw.Size = new System.Drawing.Size(383, 39);
             this.txt_pw.TabIndex = 2;
+            // 
+            // lbl_resetPw
+            // 
+            this.lbl_resetPw.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_resetPw.AutoSize = true;
+            this.lbl_resetPw.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbl_resetPw.ForeColor = System.Drawing.Color.Gray;
+            this.lbl_resetPw.Location = new System.Drawing.Point(422, 221);
+            this.lbl_resetPw.Name = "lbl_resetPw";
+            this.lbl_resetPw.Size = new System.Drawing.Size(117, 15);
+            this.lbl_resetPw.TabIndex = 0;
+            this.lbl_resetPw.Text = "비밀번호 재설정";
             // 
             // lbl_pw
             // 
@@ -178,6 +169,30 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "로그인";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // txt_id
+            // 
+            this.txt_id.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_id.Font = new System.Drawing.Font("돋움", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txt_id.Location = new System.Drawing.Point(156, 82);
+            this.txt_id.Name = "txt_id";
+            this.txt_id.Size = new System.Drawing.Size(383, 39);
+            this.txt_id.TabIndex = 1;
+            // 
+            // lbl_id
+            // 
+            this.lbl_id.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_id.AutoSize = true;
+            this.lbl_id.Location = new System.Drawing.Point(153, 54);
+            this.lbl_id.Name = "lbl_id";
+            this.lbl_id.Size = new System.Drawing.Size(52, 15);
+            this.lbl_id.TabIndex = 0;
+            this.lbl_id.Text = "아이디";
             // 
             // panel2
             // 
@@ -187,20 +202,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(716, 105);
             this.panel2.TabIndex = 2;
-            // 
-            // lbl_resetPw
-            // 
-            this.lbl_resetPw.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_resetPw.AutoSize = true;
-            this.lbl_resetPw.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbl_resetPw.ForeColor = System.Drawing.Color.Gray;
-            this.lbl_resetPw.Location = new System.Drawing.Point(422, 221);
-            this.lbl_resetPw.Name = "lbl_resetPw";
-            this.lbl_resetPw.Size = new System.Drawing.Size(117, 15);
-            this.lbl_resetPw.TabIndex = 0;
-            this.lbl_resetPw.Text = "비밀번호 재설정";
             // 
             // lbl_signUp
             // 
