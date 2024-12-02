@@ -41,6 +41,7 @@
             this.lbl_id = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_signUp = new System.Windows.Forms.Label();
+            this.lbl_result = new System.Windows.Forms.Label();
             this.loginTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_loginMain)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -107,6 +108,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lbl_result);
             this.panel1.Controls.Add(this.txt_pw);
             this.panel1.Controls.Add(this.lbl_resetPw);
             this.panel1.Controls.Add(this.lbl_pw);
@@ -169,7 +171,6 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "로그인";
             this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // txt_id
             // 
@@ -214,6 +215,14 @@
             this.lbl_signUp.Text = "회원가입";
             this.lbl_signUp.Click += new System.EventHandler(this.label5_Click);
             // 
+            // lbl_result
+            // 
+            this.lbl_result.AutoSize = true;
+            this.lbl_result.Location = new System.Drawing.Point(160, 251);
+            this.lbl_result.Name = "lbl_result";
+            this.lbl_result.Size = new System.Drawing.Size(0, 19);
+            this.lbl_result.TabIndex = 4;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -223,6 +232,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMain";
+            this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.loginTableLayoutPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pic_loginMain)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -251,5 +261,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbl_resetPw;
         private System.Windows.Forms.Label lbl_signUp;
+        private System.Windows.Forms.Label lbl_result;
     }
 }

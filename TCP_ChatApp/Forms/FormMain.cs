@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,9 +15,23 @@ namespace TCP_ChatApp.Forms
 
     public partial class FormMain : Form
     {
+        bool loginable = false;
         public FormMain()
         {
             InitializeComponent();
+        }
+
+        private void FormMain_Shown(object sender, EventArgs e)
+        {
+            if (Program.client.Connected)
+            {
+                loginable = true;
+            }
+            else
+            {
+                lbl_result.Text = $"서버에 연결 중입니다.\n{Program.hostname}:{Program.port}";
+                Program.client.BeginConnect(Program.hostname, Program.port, EndConnect, null);
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -25,42 +40,45 @@ namespace TCP_ChatApp.Forms
             signUp.Show();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        public void EndConnect(IAsyncResult result)
         {
-            string username = txt_id.Text;
-            string password = txt_pw.Text;
-
-            string response = SendRequest($"LOGIN|{username}|{password}");
-            if (response.StartsWith("SUCCESS"))
+            string resultText = Program.client.Connected ? "" : "기본 서버 연결 실패";
+            try
             {
-                MessageBox.Show("Login successful!");
-                // 이후 1:1 채팅 화면으로 이동
+                Program.client.EndConnect(result);
+            }catch(Exception ex)
+            {
+                resultText = ex.Message;
+            }
+
+            // 연결 도중 폼을 닫으면 함수 실행 안함
+            if (this == null) return;
+
+            // 연결에 따른 결과 메세지 설정 및 연결 성공 시 수신 스레드 시작
+            if(Program.client.Connected)
+            {
+                Program.ns = Program.client.GetStream();
+                Program.recvThread.Start();
+                resultText = "서버와 연결되었습니다";
             }
             else
             {
-                MessageBox.Show(response.Split('|')[1]);
+                resultText += "\n5초 뒤 연결을 재시도 합니다.";
+            }
+
+            // 연결에 따른 컨트롤 변화
+            loginable = true;
+            Invoke(new MethodInvoker(() =>
+            {
+                lbl_result.Text = resultText;
+            }));
+
+            if (!Program.client.Connected)
+            {
+                Thread.Sleep(5000);
+                FormMain_Shown(null,new EventArgs());
             }
         }
 
-        private string SendRequest(string message)
-        {
-            try
-            {
-                using (TcpClient client = new TcpClient("127.0.0.1", 5000))
-                using (NetworkStream stream = client.GetStream())
-                {
-                    byte[] buffer = Encoding.UTF8.GetBytes(message);
-                    stream.Write(buffer, 0, buffer.Length);
-
-                    buffer = new byte[1024];
-                    int bytesRead = stream.Read(buffer, 0, buffer.Length);
-                    return Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                }
-            }
-            catch
-            {
-                return "ERROR|Failed to connect to server";
-            }
-        }
     }
 }

@@ -152,7 +152,6 @@
             this.btn_idCheck.TabIndex = 2;
             this.btn_idCheck.Text = "중복 체크";
             this.btn_idCheck.UseVisualStyleBackColor = true;
-            this.btn_idCheck.Click += new System.EventHandler(this.btn_idCheck_Click);
             // 
             // txt_rePw
             // 
