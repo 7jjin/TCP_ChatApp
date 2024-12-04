@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -10,6 +11,7 @@ using TCP_ChatApp.Forms;
 using TCP_ChatApp.Models;
 using TCP_ChatApp.Packets;
 using TCP_ChatApp.Utils;
+using System.Text.Json;
 
 namespace TCP_ChatApp
 {
@@ -22,7 +24,7 @@ namespace TCP_ChatApp
         public static string hostname;                                  // 접속할 서버 주소
         public static readonly ushort port = 5000;                      // 접속할 서버 포트
         public static Thread recvThread;                                // 서버로부터 수신을 대기하는 스레드
-        public static Dictionary<PacketType, Action<Packet>> callback;  // 타입에 따른 콜백 메서드
+        public static Dictionary<PacketType, Action<String>> callback;  // 타입에 따른 콜백 메서드
 
         public static User user;                                        // 나의 사원 정보
         public static Dictionary<string,User> users;                    // 사원들 정보
@@ -36,7 +38,7 @@ namespace TCP_ChatApp
         {
             client = new TcpClient();
             recvThread = new Thread(new ThreadStart(Recieve));
-            callback = new Dictionary<PacketType,Action<Packet>>();
+            callback = new Dictionary<PacketType,Action<String>>();
 
             string[] args = Environment.GetCommandLineArgs();
             hostname = args.Length > 1 ? args[1] : "127.0.0.1";
@@ -96,29 +98,25 @@ namespace TCP_ChatApp
                     // 서버와 연결이 종료되었다면 재시작 후 접속 시도
                     break;
                 }
-                // 패킷 번역
-                object pakcetObj = null;
+
+
+                // AES256 해독 후 JSON 기반 역직렬화
+                string decryptedJson = Encoding.UTF8.GetString(AES256.Decrypt(readBuffer));
+                Packet packet = null;
                 try
                 {
-                    pakcetObj = Packet.Deserialize(AES256.Decrypt(readBuffer));
+                    packet = JsonSerializer.Deserialize<Packet>(decryptedJson);
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     formMain.Invoke(new MethodInvoker(() =>
                         MessageBox.Show(formMain, ex.ToString(), "Deserialize",
                         MessageBoxButtons.OK, MessageBoxIcon.Error)));
-
-                    // 패킷 받는 도중 예외가 발생했을 때
-                    // 서버와 연결이 종료되었다면 재시작 후 접속 시도
                     break;
                 }
-                if (pakcetObj == null) continue;
 
-                Packet packet = pakcetObj as Packet;
-
-                // 패킷 타입에 따라 호출 가능한 콜백 메서드 실행
                 if (callback.ContainsKey(packet.type))
-                    callback[packet.type].Invoke(packet);
+                    callback[packet.type].Invoke(decryptedJson);
             }
 
             Application.Exit();

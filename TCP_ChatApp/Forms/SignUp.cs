@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TCP_ChatApp.Models;
@@ -40,13 +41,18 @@ namespace TCP_ChatApp.Forms
         }
 
 
-        void ReceiveChat(Packet p)
+        /// <summary>
+        /// 회원가입 데이터 받기
+        /// </summary>
+        /// <param name="str"></param>
+        void ReceiveChat(String str)
         {
             Program.callback.Remove(PacketType.Register);
+            RegisterPacket registerPacket = JsonSerializer.Deserialize<RegisterPacket>(str);
 
             Invoke(new MethodInvoker(() =>
             {
-                if((p as RegisterPacket).success)
+                if(registerPacket.success)
                 {
                     MessageBox.Show(this,"성공","회원 등록",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
