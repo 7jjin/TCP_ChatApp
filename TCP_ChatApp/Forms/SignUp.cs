@@ -35,7 +35,7 @@ namespace TCP_ChatApp.Forms
             try
             {
                 Program.callback.Add(PacketType.Register, ReceiveChat);
-                Program.Send(new RegisterPacket(new User(txt_id.Text, txt_name.Text, txt_pw.Text, txt_phoneNumber.Text)));
+                Program.Send(new RegisterPacket(new User(txt_id.Text, txt_name.Text, PasswordHasher.HashPassword(txt_pw.Text), txt_phoneNumber.Text)));
             }
             catch (FormatException) { }
         }
