@@ -33,6 +33,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_loginTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_result = new System.Windows.Forms.Label();
             this.txt_pw = new System.Windows.Forms.TextBox();
             this.lbl_resetPw = new System.Windows.Forms.Label();
             this.lbl_pw = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.lbl_id = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_signUp = new System.Windows.Forms.Label();
-            this.lbl_result = new System.Windows.Forms.Label();
             this.loginTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_loginMain)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -121,6 +121,14 @@
             this.panel1.Size = new System.Drawing.Size(716, 328);
             this.panel1.TabIndex = 1;
             // 
+            // lbl_result
+            // 
+            this.lbl_result.AutoSize = true;
+            this.lbl_result.Location = new System.Drawing.Point(153, 251);
+            this.lbl_result.Name = "lbl_result";
+            this.lbl_result.Size = new System.Drawing.Size(0, 15);
+            this.lbl_result.TabIndex = 4;
+            // 
             // txt_pw
             // 
             this.txt_pw.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -171,6 +179,7 @@
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "로그인";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // txt_id
             // 
@@ -213,15 +222,9 @@
             this.lbl_signUp.Size = new System.Drawing.Size(67, 15);
             this.lbl_signUp.TabIndex = 1;
             this.lbl_signUp.Text = "회원가입";
-            this.lbl_signUp.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // lbl_result
-            // 
-            this.lbl_result.AutoSize = true;
-            this.lbl_result.Location = new System.Drawing.Point(160, 251);
-            this.lbl_result.Name = "lbl_result";
-            this.lbl_result.Size = new System.Drawing.Size(0, 19);
-            this.lbl_result.TabIndex = 4;
+            this.lbl_signUp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_signUp.UseMnemonic = false;
+            this.lbl_signUp.Click += new System.EventHandler(this.lbl_signUp_Click);
             // 
             // FormMain
             // 

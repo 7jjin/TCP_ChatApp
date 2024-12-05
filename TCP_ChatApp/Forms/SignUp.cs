@@ -27,7 +27,7 @@ namespace TCP_ChatApp.Forms
         }
 
         /// <summary>
-        /// 중복 ID 체크
+        /// 중복 ID 체크 이벤트
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -42,29 +42,7 @@ namespace TCP_ChatApp.Forms
         }
 
         /// <summary>
-        /// 중복 ID 체크 메서드
-        /// </summary>
-        /// <param name="str"></param>
-        void ReceiveIdCheck(string str)
-        {
-            Program.callback.Remove(PacketType.IdCheck);
-            idCheckPacket = JsonSerializer.Deserialize<IdCheckPacket>(str);
-
-            Invoke(new MethodInvoker(() =>
-            {
-                if (idCheckPacket.success)
-                {
-                    MessageBox.Show(this, "사용 가능한 ID 입니다.", "회원 등록", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show(this, "중복된 아이디 입니다.", "회원 등록", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }));
-        }
-
-        /// <summary>
-        /// 회원가입 등록
+        /// 회원가입 등록 이벤트
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -101,6 +79,38 @@ namespace TCP_ChatApp.Forms
             }
         }
 
+        /// <summary>
+        /// 취소하기 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+        /// <summary>
+        /// 중복 ID 체크 메서드
+        /// </summary>
+        /// <param name="str"></param>
+        void ReceiveIdCheck(string str)
+        {
+            Program.callback.Remove(PacketType.IdCheck);
+            idCheckPacket = JsonSerializer.Deserialize<IdCheckPacket>(str);
+
+            Invoke(new MethodInvoker(() =>
+            {
+                if (idCheckPacket.success)
+                {
+                    MessageBox.Show(this, "사용 가능한 ID 입니다.", "회원 등록", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(this, "중복된 아이디 입니다.", "회원 등록", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }));
+        }
 
         /// <summary>
         /// 회원가입 메서드
@@ -171,15 +181,7 @@ namespace TCP_ChatApp.Forms
             return System.Text.RegularExpressions.Regex.IsMatch(phoneNumber, pattern);
         }
 
-        /// <summary>
-        /// 취소하기 버튼
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_cancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+       
 
         
     }
