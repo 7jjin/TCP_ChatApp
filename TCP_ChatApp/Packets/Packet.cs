@@ -12,7 +12,7 @@ namespace TCP_ChatApp.Packets
     public enum PacketType
     {
         Header, Close,
-        Login, DuplicateLogin, Logout, Register,
+        Login, DuplicateLogin, Logout, Register, IdCheck,
         Chat, Room,
         Schedule,
     }

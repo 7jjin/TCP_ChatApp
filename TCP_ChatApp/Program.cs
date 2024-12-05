@@ -124,6 +124,10 @@ namespace TCP_ChatApp
         }
 
 
+        /// <summary>
+        /// 패킷 전송
+        /// </summary>
+        /// <param name="packet"></param>
         public static void Send(Packet packet)
         {
             lock (locker)

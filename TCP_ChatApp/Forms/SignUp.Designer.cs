@@ -117,7 +117,7 @@
             this.lbl_phoneNumber.AutoSize = true;
             this.lbl_phoneNumber.Location = new System.Drawing.Point(108, 330);
             this.lbl_phoneNumber.Name = "lbl_phoneNumber";
-            this.lbl_phoneNumber.Size = new System.Drawing.Size(84, 19);
+            this.lbl_phoneNumber.Size = new System.Drawing.Size(67, 15);
             this.lbl_phoneNumber.TabIndex = 11;
             this.lbl_phoneNumber.Text = "전화번호";
             // 
@@ -152,6 +152,7 @@
             this.btn_idCheck.TabIndex = 2;
             this.btn_idCheck.Text = "중복 체크";
             this.btn_idCheck.UseVisualStyleBackColor = true;
+            this.btn_idCheck.Click += new System.EventHandler(this.btn_idCheck_Click);
             // 
             // txt_rePw
             // 
