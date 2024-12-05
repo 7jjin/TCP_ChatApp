@@ -45,6 +45,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_register = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
+            this.lbl_result = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -225,6 +226,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lbl_result);
             this.panel2.Controls.Add(this.btn_register);
             this.panel2.Controls.Add(this.btn_cancel);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -235,7 +237,7 @@
             // 
             // btn_register
             // 
-            this.btn_register.Location = new System.Drawing.Point(145, 26);
+            this.btn_register.Location = new System.Drawing.Point(143, 49);
             this.btn_register.Name = "btn_register";
             this.btn_register.Size = new System.Drawing.Size(134, 40);
             this.btn_register.TabIndex = 7;
@@ -245,13 +247,21 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(294, 26);
+            this.btn_cancel.Location = new System.Drawing.Point(292, 49);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(134, 40);
             this.btn_cancel.TabIndex = 8;
             this.btn_cancel.Text = "가입취소";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // lbl_result
+            // 
+            this.lbl_result.AutoSize = true;
+            this.lbl_result.Location = new System.Drawing.Point(260, 18);
+            this.lbl_result.Name = "lbl_result";
+            this.lbl_result.Size = new System.Drawing.Size(0, 19);
+            this.lbl_result.TabIndex = 9;
             // 
             // SignUp
             // 
@@ -267,6 +277,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -290,5 +301,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btn_register;
         private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Label lbl_result;
     }
 }
