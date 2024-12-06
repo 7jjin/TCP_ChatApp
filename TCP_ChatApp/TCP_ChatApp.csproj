@@ -95,6 +95,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FormChatList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormChatList.Designer.cs">
+      <DependentUpon>FormChatList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormFriendList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormFriendList.Designer.cs">
+      <DependentUpon>FormFriendList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,12 +128,22 @@
     <Compile Include="Models\Users.cs" />
     <Compile Include="Packets\IdCheckPacket.cs" />
     <Compile Include="Packets\LoginPacket.cs" />
+    <Compile Include="Packets\LogoutPacket.cs" />
     <Compile Include="Packets\Packet.cs" />
     <Compile Include="Packets\RegisterPacket.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\AES256.cs" />
     <Compile Include="Utils\PasswordHasher.cs" />
+    <EmbeddedResource Include="Forms\FormChatList.resx">
+      <DependentUpon>FormChatList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormFriendList.resx">
+      <DependentUpon>FormFriendList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,7 +175,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\chatList.png" />
     <Content Include="Resources\LoginPicture.jpg" />
+    <Content Include="Resources\logout.png" />
+    <Content Include="Resources\people.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Panels\" />
